@@ -8,10 +8,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require('./config/db');
 const userController = require('./Controllers/User.Controller');
 const bookController = require('./Controllers/Book.Controller');
-const User = require('./Model/User.Model');
-const Book = require('./Model/Books.Model');
+const junctionController = require("./Controllers/Junction.Controller")
+
+
 
 app.use('/user', userController);
+app.use("/" , junctionController)
 app.use('/', bookController);
 
 

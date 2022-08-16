@@ -1,7 +1,7 @@
 const express = require('express');
 
 const Router = express.Router();
-const {User  , Book} = require("../config/db");
+const {User  , Book } = require("../config/db");
  
 
 
@@ -10,6 +10,7 @@ Router.get('/', (req, res) => {
         include:[{
             model:Book,
             attributes:['title' , 'id']
+            
      }]
     }).then(users => {
         res.send(users);
@@ -51,5 +52,10 @@ Router.post('/', (req, res) => {
 
 }   //end of post
 );
+
+
+
+
+
 
 module.exports = Router;

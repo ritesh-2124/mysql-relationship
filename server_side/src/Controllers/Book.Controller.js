@@ -1,6 +1,6 @@
 const express = require('express');
 const Router = express.Router();
-const { Book, User} = require("../config/db");
+const { Book, User, Junction} = require("../config/db");
 
 
 
@@ -10,6 +10,10 @@ Router.get('/book', (req, res) => {
          include:[{
                 model:User,
                 attributes:['name' , 'email']
+         }],
+         exclude:[{
+            model : User,
+            attributes:['createdAt' , 'updatedAt']
          }]
     }).then(users => {
         res.send(users);
